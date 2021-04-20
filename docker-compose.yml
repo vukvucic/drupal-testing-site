@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    image: drupal
+    volumes:
+      - ./docroot:/var/www/html:cached
+    ports:
+      - "8080:80"
+  db:
+    image: mariadb/server
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: drupaldb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: password
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+     - "8001:80"

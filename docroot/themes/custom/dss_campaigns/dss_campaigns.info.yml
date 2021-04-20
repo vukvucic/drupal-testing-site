@@ -1,0 +1,8 @@
+name: DSS Campaigns Theme
+type: theme
+description: 'The Drupal 9 theme for the DSS campaigns website'
+core_version_requirement: ^8 || ^9
+base theme: bartik
+
+libraries:
+  - dss_campaigns/theme
